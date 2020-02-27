@@ -1,6 +1,8 @@
 # Various Test Challenges I've Done For Companies!
 
-See the original assignment briefs and my output in the corresponding folders. All the code is authentic and produced with 💜
+See the original assignment briefs and my output in the corresponding folders.
+
+All the code is authentic and produced with 💜
 
 | Company           | Role     | Stack               | What's Been Implemented                                                                                                               |
 |-------------------|----------|---------------------|---------------------------------------------------------------------------------------------------------------------------------------|
