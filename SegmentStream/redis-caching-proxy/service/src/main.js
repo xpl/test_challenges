@@ -6,7 +6,6 @@ import makeLRUCached   from './LRU'      // our ad-hoc LRU cache implementation
 
 import { justDieOnAnyError, readEnv } from './util' // a bit of boilerplate...
 
-
 //  -----------------------------------------------------------------------------------
 
 justDieOnAnyError () // ...and let the orchestrator handle the restart

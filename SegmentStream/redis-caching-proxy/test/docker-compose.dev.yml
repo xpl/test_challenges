@@ -1,0 +1,13 @@
+version: '3.6'                                  #   Extends docker-compose.yml
+services:
+
+  test:
+    entrypoint: npm run dev                     #   Launches Mocha in --watch mode
+    volumes:
+      - ./src:/usr/src/app/src                  #   (maps source code)
+
+  redis-caching-proxy:
+    build:
+      dockerfile: Dockerfile.dev                #   Launches with hot code reloading
+    volumes:
+      - ../service/src:/usr/src/app/src         #   (maps source code)

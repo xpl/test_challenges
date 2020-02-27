@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "mocha -r esm",
-    "dev": "env REDIS_HOST=localhost REDIS_PORT=6379 PROXY_HOST=localhost PROXY_PORT=8080 mocha -r esm --watch"
+    "start": "mocha -r esm src/test",
+    "dev":   "mocha -r esm src/test --watch"
   },
   "author": "",
   "license": "ISC",

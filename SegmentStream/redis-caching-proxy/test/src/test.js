@@ -1,11 +1,11 @@
 import { equal } from 'assert'
-import { sleep, randomStr, longRunningTest, env, proxy, connectToRedisFromTestRunner } from './util'
+import { sleep, randomStr, longRunningTest, env, proxy, connectToRedisFromTestsRunner } from './util'
 
 //  -----------------------------------------------------------------------------------
 
 describe ('Redis Caching Proxy End-To-End Test', () => {
     
-    const redis = connectToRedisFromTestRunner () // suspends tests until connected + disconnects when done
+    const redis = connectToRedisFromTestsRunner () // suspends tests until connected + disconnects when done
 
 //  -----------------------------------------------------------------------------------
 
@@ -40,7 +40,7 @@ describe ('Redis Caching Proxy End-To-End Test', () => {
 
     it ('implements cache eviction (max keys) and global expiry (TTL)', longRunningTest (async () => {
 
-    /*  The test is hard-coded (for clarity) — assuming CACHE_MAX_KEYS=3 */
+    /*  The test is hard-coded (for clarity) — assuming CACHE_MAX_KEYS=3    */
 
         equal (env.CACHE_MAX_KEYS, "3")
 

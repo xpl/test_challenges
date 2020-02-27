@@ -3,10 +3,10 @@ ENV TERM xterm-256color
 
 WORKDIR /usr/src/app
 
-# Install NPM deps first (separate layer for speedier rebuilds)
-COPY package*.json ./
+# Deps, .env
+COPY package*.json .env ./
 RUN npm ci
 
 # App source
-COPY .env *.js ./
+COPY src ./src
 ENTRYPOINT ["npm", "start"]

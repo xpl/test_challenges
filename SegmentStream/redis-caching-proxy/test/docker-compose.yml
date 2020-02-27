@@ -2,7 +2,8 @@ version: '3.6'
 services:
 
   test:                                          #    Our test suite (Node/Mocha)
-    build: .
+    build:
+      context: .
     depends_on:
       - redis-caching-proxy
 

@@ -9,5 +9,5 @@ COPY package*.json ./
 RUN npm ci --only=production
 
 # App source
-COPY src ./
-ENTRYPOINT ["node", "-r", "esm", "main"]
+COPY src ./src
+ENTRYPOINT ["node", "-r", "esm", "src/main"]
