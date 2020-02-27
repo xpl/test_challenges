@@ -1,0 +1,17 @@
+{
+  "name": "redis-caching-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node -r esm src/main",
+    "dev": "env PROXY_PORT=8080 REDIS_HOST=localhost REDIS_PORT=6379 CACHE_MAX_TTL_MS=1000 CACHE_MAX_KEYS=3 npx supervisor -- -r esm src/main"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ansicolor": "^1.1.93",
+    "esm": "^3.2.25",
+    "redis": "^3.0.2"
+  }
+}

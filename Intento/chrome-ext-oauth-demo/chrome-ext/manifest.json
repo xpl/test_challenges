@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1lFWAe3Qx6VWFJOhs8nxph/wl5heaTERnDfdcnAe0kWCzptp4XllE9JGxbFpgX2f/LpdcNZ7EwrrWyGAXLaOMSdAMP3V9fNBExUWM0PH6xlAqA9M5J2sD9yk1Yrq4MOQpALs0abma++0Zq2+FtVDOOw/zsfz6J2mgMoIHw/huJutc0cCe/IDOCZwmsHMZoDHe4XThc4nI1NSyTsE9XKtZDOR1RY3+hwReQ3iCNdMucJH8PkBauUIABJAHnThS97X5VYyo995MaBIPNZIWhIQNSHb76DBtTt3WdiB/U8z9gP69TxrlR4HD7tMCZMJ7v8wrwlxVJvxhFlTsZe7BudmrwIDAQAB",
+
+    "name":        "Supa Cool Extension For Intento",
+    "description": "Входит, выходит и входит. Замечательно выходит! © Винни-Пух",
+    "version":     "1.1337.0",
+    "author":      "Vitaly Gordon",
+
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon":  "icon.png",
+        "default_title": "Входит, выходит и входит. Замечательно выходит! © Винни-Пух"
+    },
+
+    "permissions": [
+        "identity",
+        "storage",
+        "https://*/*"
+    ],
+
+    "background": {
+        "scripts": ["hot-reload.js", "background.js"]
+    }
+}
