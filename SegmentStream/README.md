@@ -22,11 +22,11 @@ To help you make these decisions, keep in mind that we ask candidates to complet
 
 ### Evaluation
 
-**NOTE:**​ We will really follow the evaluation procedure outlined below and will not proceed with evaluating the submission if the steps below do no work as expected.
+**NOTE:** We will really follow the evaluation procedure outlined below and will not proceed with evaluating the submission if the steps below do no work as expected.
 
 Please also pay attention to the “single-click build and test” requirement which appears further down in the document. It is not an optional requirement and explicitly outlines the platform requirements (i.e. what you can expect from the environment in which the code would be evaluated) and constraints (i.e. what changes you are allowed to make, or not make, to the environment in which you are executing the build and test).
 
-When we receive your submission, the first thing we’ll do is to unpack the code archive (or `​git clone`​ it, if appropriate), enter the directory and run ​`make test`​. The expectation is that, by following the steps above, the code would build itself and run all relevant tests. We expect it to, at least, contain an end-to-end test for each requirement you claim to implement. After successfully running the tests, we’ll review the code and design.
+When we receive your submission, the first thing we’ll do is to unpack the code archive (or `git clone` it, if appropriate), enter the directory and run ​`make test`​. The expectation is that, by following the steps above, the code would build itself and run all relevant tests. We expect it to, at least, contain an end-to-end test for each requirement you claim to implement. After successfully running the tests, we’ll review the code and design.
 
 For example, this should “just work”:
 
@@ -95,7 +95,7 @@ The software build and tests pass on a modern Linux distribution or Mac OS insta
 
 #### Single-click build and test
 
-After extracting the source code archive, or cloning it from a Git repo, entering the top-level project directory and executing ​make test​ will build the code and run all the relevant tests. Apart from the downloading and manipulation of docker images and containers, no changes are made to the host system outside the top-level directory of the project. The build and test should be fully repeatable and not requires any of software installed on the host system, with the exception of anything specified explicitly in the Platform requirement.
+After extracting the source code archive, or cloning it from a Git repo, entering the top-level project directory and executing `make test` will build the code and run all the relevant tests. Apart from the downloading and manipulation of docker images and containers, no changes are made to the host system outside the top-level directory of the project. The build and test should be fully repeatable and not requires any of software installed on the host system, with the exception of anything specified explicitly in the Platform requirement.
 
 #### Documentation
 
