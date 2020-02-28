@@ -13,7 +13,7 @@ utilizing the same library for doing I/O (**libuv**) or similar stuff (_libev, l
 
 ### Here's my line of reasoning:
 
-- **Our service must be I/O bound** — i.e. most of the time it waits for an I/O to happen. And it does not perform any
+- **Our service seems to be I/O bound** — i.e. most of the time it waits for an I/O to happen. And it does not perform any
   CPU-intensive processing in JS callbacks. All it does is touching the LRU cache and issuing more I/O. And that cache thing
   is _small peanuts_ in terms of CPU utilization — it's literally just a couple of hashtable / linked list operations that
   cannot take more than a few hundred CPU cycles.
