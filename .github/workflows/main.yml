@@ -11,5 +11,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: SegmentStream
       run: |
-        echo cd SegmentStream/redis-caching-proxy
-        echo make test
+        cd SegmentStream/redis-caching-proxy
+        make test
