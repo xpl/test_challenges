@@ -97,7 +97,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 
 ![Tests](https://user-images.githubusercontent.com/1707/75506600-8b755600-59ef-11ea-8dba-43b4ab78a639.png)
 
-### 2.2. Tests Implemented
+### Tests Implemented
 
 - Responds with 404 on an unknown key
 - Implements cached GET for keys
