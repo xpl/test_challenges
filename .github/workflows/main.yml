@@ -8,7 +8,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
     - uses: actions/checkout@v2
+    - name: Get files in the last commit, extract top-level folder names
+      run: echo ::set-env name=FOLDERS_CHANGED::$(git diff --name-only HEAD~1 | cut -d'/' -f1)
+
+    - if: ${{ contains (env.FOLDERS_CHANGED, "SegmentStream") }}
     - name: SegmentStream
       run: |
         cd SegmentStream/redis-caching-proxy
