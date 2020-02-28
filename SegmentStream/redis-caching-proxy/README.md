@@ -56,7 +56,7 @@ Listens on an HTTP port using the built-in `http` module.
 - It expects incoming **GET requests** with URLs like `/key` (url-encoded).
 - Other requests result in **HTTP 405** (Method Not Allowed)
 
-### 1.3. Managers A Caching Layer
+### 1.3. Manages A Caching Layer
 
 Requested keys first get looked up in an **LRU cache**:
 
