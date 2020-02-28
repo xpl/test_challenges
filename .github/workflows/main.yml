@@ -11,8 +11,8 @@ jobs:
 
     - uses: actions/checkout@v2
 
-    - name: Get files in the last commit, extract top-level folder names
-      run: echo ::set-env name=FOLDERS_CHANGED::$(git diff --name-only HEAD@{1} | cut -d'/' -f1)
+    - name: Get files names from the last commit, extract top-level folder names
+      run: echo ::set-env name=FOLDERS_CHANGED::$(git log --oneline -1 --name-only | tail -n +2 | cut -d'/' -f1)
 
     - name: SegmentStream
       #if: ${{ contains (env.FOLDERS_CHANGED, "SegmentStream") }}
