@@ -172,6 +172,7 @@ docker container run \
     -e PROXY_PORT=8080 \
     -e CACHE_MAX_KEYS=500 \
     -e CACHE_MAX_TTL_MS=10000 \
+    -e MAX_CONCURRENT_SOCKETS=-1 \
     -p 8080:8080 --init --rm --name redis-caching-proxy redis-caching-proxy:1.0
 ```
 
