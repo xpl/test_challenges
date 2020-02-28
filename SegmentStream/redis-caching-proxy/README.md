@@ -6,7 +6,7 @@ Upon a brief research, I decided to use **Node** for implementing the proxy serv
 
 Yeah, and at first glance I thought that it would be too slow, under-utilizing CPU cores due to its single-threadness, so I
 started looking into C++ or Go... but then, after a more thorough thinking, I abandoned those attempts — realizing that
-while a C++ implementation would've surely provided a better performance, it is not at all because of multithreading...
+while a C++ implementation would've surely provided a better performance — the multithreading has nothing to do with that...
 
 Actually, had I implemented it in C++, it would've been processing requests in pretty much the same way as Node! Likely even
 utilizing the same library for doing I/O (**libuv**) or similar stuff (_libev, libevents_).
