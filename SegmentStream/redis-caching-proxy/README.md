@@ -137,7 +137,7 @@ In our implementation, there are two data structures involved in basic operation
 | **Evict Old**  | pop: O(1)        | delete: O(1)        |
 
 It is safe to say that our cache operates in **O(1)** time on **average**. Because we use a hashtable, there
-could be collisions, so the worst case is O(N).
+could be collisions, so the worst case is **O(N)**. But if a cache entry already exists ("move up" operation), the worst case is **O(1)** — because no hashmap involved in that case.
 
 # How To Run
 
