@@ -138,12 +138,13 @@ In our implementation, there are two data structures involved in basic operation
 
 |            | **DoublyLinkedList** | **Map<K, V>** (average) | **Map<K, V>** (worst) |
 |------------|------------------|---------------------|---------------------|
+| **Look up**    | _not involved_             | O(1)        | O(N)        |
 | **Insert New** | prepend: O(1)    | insert: O(1)        | insert: O(N)        |
 | **Move Up**    | relink: O(1)     | _not involved_      | _not involved_      |
 | **Evict Old**  | pop: O(1)        | delete: O(1)        | delete: O(N)        |
 
 It is safe to say that our cache operates in **O(1)** time on **average**. Because we use a hashtable, there
-could be collisions, so the worst case is **O(N)**. But if a cache entry already exists ("move up" operation), the worst case is **O(1)** — because of no hashmap involved in that case.
+could be collisions, so the worst case is **O(N)**.
 
 # How To Run
 
