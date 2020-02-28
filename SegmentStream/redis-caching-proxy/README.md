@@ -97,7 +97,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 
 ![Tests](https://user-images.githubusercontent.com/1707/75506600-8b755600-59ef-11ea-8dba-43b4ab78a639.png)
 
-### 2.2. Tests Implemented
+### Tests Implemented
 
 - Responds with 404 on an unknown key
 - Implements cached GET for keys
@@ -143,7 +143,7 @@ In our implementation, there are two data structures involved in basic operation
 | **Evict Old**  | pop: O(1)        | delete: O(1)        | delete: O(N)        |
 
 It is safe to say that our cache operates in **O(1)** time on **average**. Because we use a hashtable, there
-could be collisions, so the worst case is **O(N)**. But if a cache entry already exists ("move up" operation), the worst case is **O(1)** — because no hashmap involved in that case.
+could be collisions, so the worst case is **O(N)**. But if a cache entry already exists ("move up" operation), the worst case is **O(1)** — because of no hashmap involved in that case.
 
 # How To Run
 
@@ -172,6 +172,7 @@ docker container run \
     -e PROXY_PORT=8080 \
     -e CACHE_MAX_KEYS=500 \
     -e CACHE_MAX_TTL_MS=10000 \
+    -e MAX_CONCURRENT_SOCKETS=-1 \
     -p 8080:8080 --init --rm --name redis-caching-proxy redis-caching-proxy:1.0
 ```
 
