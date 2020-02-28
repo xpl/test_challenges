@@ -92,7 +92,7 @@ describe ('Redis Caching Proxy End-To-End Test', () => {
         await redis.set (key, 'BAR')
         equal (await proxy.get (key), 'foo') // ← old value
 
-        await sleep (Number (env.CACHE_MAX_TTL_MS))
+        await sleep (Number (env.CACHE_MAX_TTL_MS) + 100)
         equal (await proxy.get (key), 'BAR') // ← NEW value (because the cache entry had been expired upon CACHE_MAX_TTL_MS)
     }))
 
