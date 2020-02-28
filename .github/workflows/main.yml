@@ -10,16 +10,20 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2   # NB: it's 1 by default — can't diff / get list of changed files...
 
-    - name: Get files names from the last commit, extract top-level folder names
+    #   1. Get files names from the last commit
+    #   2. Extract top-level folder names
+    #   3. Write to FOLDERS_CHANGED
+    #
+    - name: Determine changed folders
       run: |
-        git log -1
         git log --oneline -1 --name-only
         echo ::set-env name=FOLDERS_CHANGED::$(git log --oneline -1 --name-only | tail -n +2 | cut -d'/' -f1)
-      
-#     - name: SegmentStream
-#       #if: ${{ contains (env.FOLDERS_CHANGED, "SegmentStream") }}
-#       run: |
-#         echo ${{ env.FOLDERS_CHANGED }}
-#         cd SegmentStream/redis-caching-proxy
-#         make test
+    
+    - name: SegmentStream
+      if: contains (env.FOLDERS_CHANGED, 'SegmentStream')
+      run: |
+        cd SegmentStream/redis-caching-proxy
+        make test
