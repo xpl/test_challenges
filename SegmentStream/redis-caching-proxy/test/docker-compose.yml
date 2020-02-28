@@ -13,11 +13,9 @@ services:
       - redis
     environment:
       REDIS_HOST:       ${REDIS_HOST}            #    Values are read from the .env file
-      REDIS_PORT:       ${REDIS_PORT}
       PROXY_PORT:       ${PROXY_PORT}
       CACHE_MAX_TTL_MS: ${CACHE_MAX_TTL_MS}
       CACHE_MAX_KEYS:   ${CACHE_MAX_KEYS}
 
   redis:                                         #    Test Redis instance
     image: redis:6.0-rc
-    command: --port ${REDIS_PORT}

@@ -14,13 +14,12 @@ const env = readEnv ({
 
     // NB: all vars are mandatory
     REDIS_HOST:       String,
-    REDIS_PORT:       Number,
     PROXY_PORT:       Number,
     CACHE_MAX_TTL_MS: Number,
     CACHE_MAX_KEYS:   Number
 })
 
-console.log ('Redis Caching Proxy started', env)
+console.log ('Redis Caching Proxy is starting', env)
 
 //  -----------------------------------------------------------------------------------
 
@@ -39,7 +38,6 @@ const redis = (function initRedis () {
 
     const client = Redis.createClient ({
         host: env.REDIS_HOST,
-        port: env.REDIS_PORT,
         retry_strategy: options => Math.min (options.attempt * 100, 1000) // always reconnect (with a simple backoff)
     })
 
@@ -81,7 +79,7 @@ const redisCachedGet = makeLRUCached (env.CACHE_MAX_KEYS, env.CACHE_MAX_TTL_MS, 
 
 const server = http.createServer (async function onRequest ({ url, method }, response) {
     
-    const timestamp = performance.now ()
+    const timestamp = performance.now () // the measurement is needed for the "processes concurrent requests in parallel" test
 
     try {
 

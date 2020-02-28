@@ -33,7 +33,7 @@ export const proxy = {
 
 export function connectToRedisFromTestsRunner () {
 
-    const client = Redis.createClient ({ host: env.REDIS_HOST, port: Number (env.REDIS_PORT) })
+    const client = Redis.createClient ({ host: env.REDIS_HOST })
                         .on ('error', () => { throw new Error ("oh noes... where's redis?") })
 
 /*  Attach to Mocha test runner    */

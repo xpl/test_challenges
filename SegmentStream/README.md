@@ -107,3 +107,15 @@ The software includes a README file with:
 - Instructions for how to run the proxy and tests.
 - How long you spent on each part of the project.
 - A list of the requirements that you did not implement and the reasons for omitting them.
+
+### Bonus Requirements
+
+The requirements below add some additional complexity to the design and can be implemented as a bonus. However, we strongly encourage candidates who are applying for a role which has a strong backend systems focus to implement these as well. To be clear, implement these requirements in addition to the ones stated above if you want to impress us even more
+
+#### Parallel concurrent processing
+
+Multiple clients are able to concurrently connect to the proxy (up to some configurable maximum limit) without adversely impacting the functional behaviour of the proxy. When multiple clients make concurrent requests to the proxy, it would execute a number of these requests (up to some configurable limit) in parallel (i.e. in a way so that one request does not have to wait for another one to complete before it starts processing).
+
+#### Redis client protocol
+
+Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol). The proxy should implement the parts of the Redis protocol that is required to meet this specification.

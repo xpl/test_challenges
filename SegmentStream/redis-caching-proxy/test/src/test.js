@@ -38,7 +38,7 @@ describe ('Redis Caching Proxy End-To-End Test', () => {
 
 //  -----------------------------------------------------------------------------------
 
-    it ('implements cache eviction (max keys) and global expiry (TTL)', longRunningTest (async () => {
+    it ('implements cache eviction (max keys)', longRunningTest (async () => {
 
     /*  The test is hard-coded (for clarity) — assuming CACHE_MAX_KEYS=3    */
 
