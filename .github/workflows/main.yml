@@ -1,0 +1,15 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: SegmentStream
+      run: |
+        echo cd SegmentStream/redis-caching-proxy
+        echo make test
