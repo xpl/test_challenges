@@ -15,6 +15,6 @@ jobs:
 
     - if: ${{ contains (env.FOLDERS_CHANGED, "SegmentStream") }}
     - name: SegmentStream
-      run: |
+    - run: |
         cd SegmentStream/redis-caching-proxy
         make test
