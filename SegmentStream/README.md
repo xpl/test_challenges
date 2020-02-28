@@ -119,3 +119,4 @@ Multiple clients are able to concurrently connect to the proxy (up to some confi
 #### Redis client protocol
 
 Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol). The proxy should implement the parts of the Redis protocol that is required to meet this specification.
+
