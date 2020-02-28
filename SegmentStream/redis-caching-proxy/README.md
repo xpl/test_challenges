@@ -189,6 +189,10 @@ I've spent on writing this doc, trying to put everything together!
 
 - I haven't implemented tests for all the features — in particular when it comes to Redis errors and Redis unavailability. Simulating a Redis downtime from inside of a test runner container won't be easy — one cannot simply start and stop containers from sibling containers — it would require a _Docker in Docker_ and messing with sharing a socket...
 
+- I haven't tested if `MAX_CONCURRENT_SOCKETS` works as intented. To implement that, I simply used the `maxSockets` option exposed by Node. In theory, that should limit the number of concurrent connections:
+
+  > ... After `maxSockets` are in use, additional requests get queued until an active request completes and a socket is freed up to be used, at which point a pending request from the queue would be sent on the newly-freed socket. ...
+
 - Oh, that thing from **Bonus requirements**. Maybe if I had 3-4 more days, I could have implemented it as well...
 
   > Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
