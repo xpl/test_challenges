@@ -1,21 +1,27 @@
 version: '3.6'
 services:
 
-  test:                                          #    Our test suite (Node/Mocha)
+  #  Our test suite (Node/Mocha)
+  test:                                                   
     build:
       context: .
     depends_on:
       - redis-caching-proxy
 
-  redis-caching-proxy:                           #    The service
+  #  The service
+  redis-caching-proxy:                                    
     build: ../service
     depends_on:
       - redis
-    environment:
-      REDIS_HOST:       ${REDIS_HOST}            #    Values are read from the .env file
-      PROXY_PORT:       ${PROXY_PORT}
-      CACHE_MAX_TTL_MS: ${CACHE_MAX_TTL_MS}
-      CACHE_MAX_KEYS:   ${CACHE_MAX_KEYS}
 
-  redis:                                         #    Test Redis instance
+    #  Values are read from the .env file
+    environment:
+      REDIS_HOST:             ${REDIS_HOST}               
+      PROXY_PORT:             ${PROXY_PORT}
+      CACHE_MAX_TTL_MS:       ${CACHE_MAX_TTL_MS}
+      CACHE_MAX_KEYS:         ${CACHE_MAX_KEYS}
+      MAX_CONCURRENT_SOCKETS: ${MAX_CONCURRENT_SOCKETS}
+
+  #  Test Redis instance
+  redis:                                                  
     image: redis:6.0-rc

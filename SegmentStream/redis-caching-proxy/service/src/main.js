@@ -12,11 +12,11 @@ justDieOnAnyError () // ...and let the orchestrator handle the restart
 
 const env = readEnv ({
 
-    // NB: all vars are mandatory
-    REDIS_HOST:       String,
-    PROXY_PORT:       Number,
-    CACHE_MAX_TTL_MS: Number,
-    CACHE_MAX_KEYS:   Number
+    REDIS_HOST:             String,  // NB: all vars are mandatory
+    PROXY_PORT:             Number,
+    CACHE_MAX_TTL_MS:       Number,
+    CACHE_MAX_KEYS:         Number,
+    MAX_CONCURRENT_SOCKETS: Number
 })
 
 console.log ('Redis Caching Proxy is starting', env)
@@ -74,6 +74,10 @@ const redis = (function initRedis () {
 //  -----------------------------------------------------------------------------------
 
 const redisCachedGet = makeLRUCached (env.CACHE_MAX_KEYS, env.CACHE_MAX_TTL_MS, redis.get)
+
+//  -----------------------------------------------------------------------------------
+
+if (env.MAX_CONCURRENT_SOCKETS > 0) http.globalAgent.maxSockets = env.MAX_CONCURRENT_SOCKETS
 
 //  -----------------------------------------------------------------------------------
 

@@ -48,6 +48,12 @@ All the configuration (e.g. ports, hostnames, cache behavior) is done via **envi
 mandatory — there are no implicit default values. Like those Python guys say, _explicit is better than implicit_.
 So one must pass them down to the container externally.
 
+- `REDIS_HOST`
+- `PROXY_PORT`
+- `CACHE_MAX_TTL_MS`
+- `CACHE_MAX_KEYS`
+- `MAX_CONCURRENT_SOCKETS` (`-1` for no limit)
+
 ### 1.2. Exposes an HTTP API
 
 Listens on an HTTP port using built-in `http` module.
@@ -97,7 +103,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 - Implements cached GET for keys
 - Implements cache eviction (max keys)
 - Implements global expiry (TTL) for keys
-- **Processes concurrent requests in parallel** (this one is particularly interesting)
+- Processes concurrent requests in parallel
 
 # What The Code Does
 
