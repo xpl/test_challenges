@@ -56,13 +56,13 @@ So one must pass them down to the container externally.
 
 ### 1.2. Exposes an HTTP API
 
-Listens on an HTTP port using built-in `http` module.
+Listens on an HTTP port using the built-in `http` module.
 
 - There is no fancy load-balancing — it is supposed to be added/configured externally if reasonable.
 - It expects incoming **GET requests** with URLs like `/key` (url-encoded).
 - Other requests result in **HTTP 405** (Method Not Allowed)
 
-### 1.3. Managers A Caching Layer
+### 1.3. Manages A Caching Layer
 
 Requested keys first get looked up in an **LRU cache**:
 
@@ -77,8 +77,8 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 
 - We use a popular [`node-redis`](https://github.com/NodeRedis/node-redis) connector
 - **If a key isn't there — we respond with HTTP 404** (Not Found)
-- **If Redis is unavailable — we respond with HTTP 503** (Unavailable)
 - If Redis responds with an error — we respond with **HTTP 502** (Bad Gateway)
+- **If Redis is unavailable — we respond with HTTP 503** (Unavailable)
 
   - There are auto-reconnects (provided by `node-redis`, we only set the "always reconnect" policy)
   - **We don't await until Redis** is back online when processing GET requests!
@@ -88,7 +88,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 ### 1.5. Handles Unexpected Errors
 
 - Unexpected errors when processing HTTP requests result in **HTTP 500** (Internal Server Error)
-- Unexpected errors in other contexts trigger **process exit** (with code 1)
+- Unexpected errors in other contexts trigger **exiting the process** (with code 1)
 
   - You are supposed to run the service using an orchestrator taking care of its restarts...
   - The service itself is "dumb" (intentionally) when it comes to error handling — it is better when externalized
@@ -136,14 +136,14 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 
 In our implementation, there are two data structures involved in basic operations. Here's the analysis:
 
-|            | **DoublyLinkedList** | **Map<K, V>** (average) |
-|------------|------------------|---------------------|
-| **Insert New** | prepend: O(1)    | insert: O(1)        |
-| **Move Up**    | relink: O(1)     | _not involved_      |
-| **Evict Old**  | pop: O(1)        | delete: O(1)        |
+|            | **DoublyLinkedList** | **Map<K, V>** (average) | **Map<K, V>** (worst) |
+|------------|------------------|---------------------|---------------------|
+| **Insert New** | prepend: O(1)    | insert: O(1)        | insert: O(N)        |
+| **Move Up**    | relink: O(1)     | _not involved_      | _not involved_      |
+| **Evict Old**  | pop: O(1)        | delete: O(1)        | delete: O(N)        |
 
 It is safe to say that our cache operates in **O(1)** time on **average**. Because we use a hashtable, there
-could be collisions, so the worst case is O(N).
+could be collisions, so the worst case is **O(N)**. But if a cache entry already exists ("move up" operation), the worst case is **O(1)** — because no hashmap involved in that case.
 
 # How To Run
 
@@ -187,8 +187,10 @@ I've spent on writing this doc, trying to put everything together!
 
 # Requirements I Did Not Implement
 
-Oh, that thing from **Bonus requirements**. Maybe if I had 3-4 more days, I could have implemented it as well...
+- I haven't implemented tests for all the features — in particular when it comes to Redis errors and Redis unavailability. Simulating a Redis downtime from inside of a test runner container won't be easy — one cannot simply start and stop containers from sibling containers — it would require a _Docker in Docker_ and messing with sharing a socket...
 
-> Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
-  The proxy should implement the parts of the Redis protocol that is required to meet this specification.
+- Oh, that thing from **Bonus requirements**. Maybe if I had 3-4 more days, I could have implemented it as well...
+
+  > Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
+    The proxy should implement the parts of the Redis protocol that is required to meet this specification.
 
