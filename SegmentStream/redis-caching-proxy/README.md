@@ -71,8 +71,8 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 
 - We use a popular [`node-redis`](https://github.com/NodeRedis/node-redis) connector
 - **If a key isn't there — we respond with HTTP 404** (Not Found)
-- **If Redis is unavailable — we respond with HTTP 503** (Unavailable)
 - If Redis responds with an error — we respond with **HTTP 502** (Bad Gateway)
+- **If Redis is unavailable — we respond with HTTP 503** (Unavailable)
 
   - There are auto-reconnects (provided by `node-redis`, we only set the "always reconnect" policy)
   - **We don't await until Redis** is back online when processing GET requests!
