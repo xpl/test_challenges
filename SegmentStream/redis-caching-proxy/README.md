@@ -181,8 +181,10 @@ I've spent on writing this doc, trying to put everything together!
 
 # Requirements I Did Not Implement
 
-Oh, that thing from **Bonus requirements**. Maybe if I had 3-4 more days, I could have implemented it as well...
+- I haven't implemented tests for all the features — in particular when it comes to Redis errors and Redis unavailability. Simulating a Redis downtime from inside of a test runner container won't be easy — one cannot simply start and stop containers from other containers — it would require a _Docker in Docker_ and messing with sharing a socket...
 
-> Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
-  The proxy should implement the parts of the Redis protocol that is required to meet this specification.
+- Oh, that thing from **Bonus requirements**. Maybe if I had 3-4 more days, I could have implemented it as well...
+
+  > Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
+    The proxy should implement the parts of the Redis protocol that is required to meet this specification.
 
