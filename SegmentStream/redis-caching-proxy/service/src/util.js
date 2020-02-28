@@ -1,5 +1,7 @@
 import { red } from 'ansicolor'
 
+//  -----------------------------------------------------------------------------------
+
 export function justDieOnAnyError () {
 
     function onUncaughtException (e) {
@@ -11,6 +13,8 @@ export function justDieOnAnyError () {
     process.on ('unhandledRejection', onUncaughtException)
 }
 
+//  -----------------------------------------------------------------------------------
+
 export function readEnv (spec) {
     return Object.fromEntries (
             Object.entries (spec).map (
@@ -18,3 +22,5 @@ export function readEnv (spec) {
                                     ? type (process.env[k])
                                     : (() => { throw new Error (`${k} is not specified!`) }) ()]))
 }
+
+//  -----------------------------------------------------------------------------------

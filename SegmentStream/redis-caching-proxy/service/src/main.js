@@ -10,6 +10,8 @@ import { justDieOnAnyError, readEnv } from './util' // a bit of boilerplate...
 
 justDieOnAnyError () // ...and let the orchestrator handle the restart
 
+//  -----------------------------------------------------------------------------------
+
 const env = readEnv ({
 
     REDIS_HOST:             String,  // NB: all vars are mandatory
@@ -110,3 +112,5 @@ const server = http.createServer (async function onRequest ({ url, method }, res
 })
 
 server.listen (env.PROXY_PORT, e => { if (e) throw e }) // let's just die if it fails
+
+//  -----------------------------------------------------------------------------------
