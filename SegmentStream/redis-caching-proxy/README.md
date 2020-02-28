@@ -131,7 +131,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 In our implementation, there are two data structures involved in basic operations. Here's the analysis:
 
 |            | **DoublyLinkedList** | **Map<K, V>** (average) | **Map<K, V>** (worst) |
-|------------|------------------|---------------------|
+|------------|------------------|---------------------|---------------------|
 | **Insert New** | prepend: O(1)    | insert: O(1)        | insert: O(N)        |
 | **Move Up**    | relink: O(1)     | _not involved_      | _not involved_      |
 | **Evict Old**  | pop: O(1)        | delete: O(1)        | delete: O(N)        |
