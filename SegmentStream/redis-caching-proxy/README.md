@@ -50,7 +50,7 @@ So one must pass them down to the container externally.
 
 ### 1.2. Exposes an HTTP API
 
-Listens on an HTTP port using built-in `http` module.
+Listens on an HTTP port using the built-in `http` module.
 
 - There is no fancy load-balancing — it is supposed to be added/configured externally if reasonable.
 - It expects incoming **GET requests** with URLs like `/key` (url-encoded).
