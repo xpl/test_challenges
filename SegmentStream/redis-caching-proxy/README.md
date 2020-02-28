@@ -199,3 +199,4 @@ I've spent on writing this doc, trying to put everything together!
   > Clients interface to the Redis proxy through a subset of the Redis protocol (as opposed to using the HTTP protocol).
     The proxy should implement the parts of the Redis protocol that is required to meet this specification.
 
+
