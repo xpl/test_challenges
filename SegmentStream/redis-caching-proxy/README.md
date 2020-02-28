@@ -82,7 +82,7 @@ If there isn't a cache entry (or an entry has been expired) **we ask Redis for a
 ### 1.5. Handles Unexpected Errors
 
 - Unexpected errors when processing HTTP requests result in **HTTP 500** (Internal Server Error)
-- Unexpected errors in other contexts trigger **process exit** (with code 1)
+- Unexpected errors in other contexts trigger **exiting the process** (with code 1)
 
   - You are supposed to run the service using an orchestrator taking care of its restarts...
   - The service itself is "dumb" (intentionally) when it comes to error handling — it is better when externalized
