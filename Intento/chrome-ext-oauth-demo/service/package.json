@@ -12,7 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "ololog": "^1.1.153",
     "supervisor": "^0.12.0"
   }
